@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/rapidapi-deply-react-app/static/css/main.b5e91f00.chunk.css",
+    "main.js": "/rapidapi-deply-react-app/static/js/main.fa2aa6e4.chunk.js",
+    "main.js.map": "/rapidapi-deply-react-app/static/js/main.fa2aa6e4.chunk.js.map",
+    "runtime-main.js": "/rapidapi-deply-react-app/static/js/runtime-main.f091a995.js",
+    "runtime-main.js.map": "/rapidapi-deply-react-app/static/js/runtime-main.f091a995.js.map",
+    "static/js/2.52426d04.chunk.js": "/rapidapi-deply-react-app/static/js/2.52426d04.chunk.js",
+    "static/js/2.52426d04.chunk.js.map": "/rapidapi-deply-react-app/static/js/2.52426d04.chunk.js.map",
+    "index.html": "/rapidapi-deply-react-app/index.html",
+    "precache-manifest.2659dfcb60368b524bc4108d489d0bf1.js": "/rapidapi-deply-react-app/precache-manifest.2659dfcb60368b524bc4108d489d0bf1.js",
+    "service-worker.js": "/rapidapi-deply-react-app/service-worker.js",
+    "static/css/main.b5e91f00.chunk.css.map": "/rapidapi-deply-react-app/static/css/main.b5e91f00.chunk.css.map",
+    "static/js/2.52426d04.chunk.js.LICENSE.txt": "/rapidapi-deply-react-app/static/js/2.52426d04.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f091a995.js",
+    "static/js/2.52426d04.chunk.js",
+    "static/css/main.b5e91f00.chunk.css",
+    "static/js/main.fa2aa6e4.chunk.js"
+  ]
+}
