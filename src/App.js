@@ -15,7 +15,7 @@ function App() {
     setLoading(true)
     setError(false)
 
-    axios.post('/api/route', { location })
+    axios.post('/api/weather', { location })
       .then(({data}) => {
         setTempC(data.tempC)
         setTempF(data.tempF)
