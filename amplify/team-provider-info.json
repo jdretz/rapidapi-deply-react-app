@@ -17,6 +17,9 @@
                     "appId": "d20qsybe45zwbs",
                     "type": "cicd"
                 }
+            },
+            "function": {
+                "callWeatherApi": {}
             }
         }
     }
