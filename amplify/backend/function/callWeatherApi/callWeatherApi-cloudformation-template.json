@@ -193,7 +193,9 @@
                         {
                             "Effect": "Allow",
                             "Action": [
-                                "lambda:Update*"
+                                "lambda:Get*",
+                                "lambda:List*",
+                                "lambda:Invoke*"
                             ],
                             "Resource": [
                                 {
@@ -212,36 +214,6 @@
                                             {
                                                 "Ref": "functioncallWeatherApiName"
                                             }
-                                        ]
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "Effect": "Allow",
-                            "Action": [
-                                "apigateway:POST",
-                                "apigateway:PUT",
-                                "apigateway:GET",
-                                "apigateway:HEAD",
-                                "apigateway:OPTIONS",
-                                "apigateway:PATCH",
-                                "apigateway:DELETE"
-                            ],
-                            "Resource": [
-                                {
-                                    "Fn::Join": [
-                                        "",
-                                        [
-                                            "arn:aws:apigateway:",
-                                            {
-                                                "Ref": "AWS::Region"
-                                            },
-                                            "::/restapis/",
-                                            {
-                                                "Ref": "apiweatherAPIApiName"
-                                            },
-                                            "/*"
                                         ]
                                     ]
                                 }
