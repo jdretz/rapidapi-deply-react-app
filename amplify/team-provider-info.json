@@ -10,6 +10,14 @@
             "StackName": "amplify-rapidapideployreact-dev-103615",
             "StackId": "arn:aws:cloudformation:us-east-1:078223272199:stack/amplify-rapidapideployreact-dev-103615/e7da4260-9d1b-11ea-b851-12695902b27f",
             "AmplifyAppId": "d20qsybe45zwbs"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d20qsybe45zwbs",
+                    "type": "cicd"
+                }
+            }
         }
     }
 }
