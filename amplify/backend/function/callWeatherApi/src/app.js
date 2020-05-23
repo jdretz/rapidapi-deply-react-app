@@ -1,4 +1,10 @@
-/*
+/* Amplify Params - DO NOT EDIT
+	API_WEATHERAPI_APIID
+	API_WEATHERAPI_APINAME
+	ENV
+	FUNCTION_CALLWEATHERAPI_NAME
+	REGION
+Amplify Params - DO NOT EDIT *//*
 Copyright 2017 - 2017 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 Licensed under the Apache License, Version 2.0 (the "License"). You may not use this file except in compliance with the License. A copy of the License is located at
     http://aws.amazon.com/apache2.0/
@@ -26,6 +32,8 @@ app.use(function(req, res, next) {
 app.post('/weather', async function(req, res) {
   // Assign the location value to the variable location from the body object
   const { location } = req.body
+
+  console.log(process.env)
 
   // Encode the variable so we can send the location in a URL
   const encodedLocation = encodeURIComponent(location)
