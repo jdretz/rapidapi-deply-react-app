@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import axios from 'axios';
 import { API } from 'aws-amplify';
 
 function App() {
@@ -16,7 +15,7 @@ function App() {
     setLoading(true)
     setError(false)
 
-    API.post('callWeatherApi', '/weather', { location })
+    API.post('weatherAPI', '/weather', { location })
       .then((data) => {
         setTempC(data.tempC)
         setTempF(data.tempF)
