@@ -16,7 +16,7 @@ function App() {
     setLoading(true)
     setError(false)
 
-    API.post('weatherAPI', '/weather', { location })
+    API.post('callWeatherApi', '/weather', { location })
       .then((data) => {
         setTempC(data.tempC)
         setTempF(data.tempF)
