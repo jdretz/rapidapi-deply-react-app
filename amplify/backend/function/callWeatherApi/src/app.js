@@ -49,6 +49,8 @@ app.post('/weather', async function (req, res) {
         "useQueryString": true
       }
     })
+    console.log(data)
+    console.log(data.response)
     // Pull the information that we need from the Weather API response
     const weatherData = {
       conditions: data.response.ob.weather,
