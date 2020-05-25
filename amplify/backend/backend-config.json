@@ -1,0 +1,25 @@
+{
+	"function": {
+		"callWeatherApi": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda"
+		}
+	},
+	"api": {
+		"weatherAPI": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "callWeatherApi",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	}
+}
