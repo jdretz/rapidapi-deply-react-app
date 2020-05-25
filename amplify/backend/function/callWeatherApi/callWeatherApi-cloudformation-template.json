@@ -4,13 +4,12 @@
     "Parameters": {
         "CloudWatchRule": {
             "Type": "String",
-            "Default" : "NONE",
-            "Description" : " Schedule Expression"
+            "Default": "NONE",
+            "Description": " Schedule Expression"
         },
         "env": {
             "Type": "String"
         }
-    
     },
     "Conditions": {
         "ShouldNotCreateEnvResources": {
@@ -24,47 +23,50 @@
     },
     "Resources": {
         "LambdaFunction": {
-          "Type": "AWS::Lambda::Function",
-          "Metadata": {
-            "aws:asset:path": "./src",
-            "aws:asset:property": "Code"
-          },
-          "Properties": {
-            "Handler": "index.handler",
-            "FunctionName": {
-                "Fn::If": [
-                    "ShouldNotCreateEnvResources",
-                    "weather", 
-                    {
-
-                        "Fn::Join": [
-                            "",
-                            [
-                                "weather",
-                                "-",
-                                {
-                                    "Ref": "env"
-                                }
+            "Type": "AWS::Lambda::Function",
+            "Metadata": {
+                "aws:asset:path": "./src",
+                "aws:asset:property": "Code"
+            },
+            "Properties": {
+                "Handler": "index.handler",
+                "FunctionName": {
+                    "Fn::If": [
+                        "ShouldNotCreateEnvResources",
+                        "weather",
+                        {
+                            "Fn::Join": [
+                                "",
+                                [
+                                    "weather",
+                                    "-",
+                                    {
+                                        "Ref": "env"
+                                    }
+                                ]
                             ]
-                        ]
-                    }      
-                ]
-            },
-            "Environment": {
-                "Variables" : {
-                    "ENV": {
-                        "Ref": "env"
-                    },
-                    "REGION": { 
-                        "Ref": "AWS::Region"
+                        }
+                    ]
+                },
+                "Environment": {
+                    "Variables": {
+                        "ENV": {
+                            "Ref": "env"
+                        },
+                        "REGION": {
+                            "Ref": "AWS::Region"
+                        }
                     }
-                    
-                }
-            },
-            "Role": { "Fn::GetAtt" : ["LambdaExecutionRole", "Arn"] },
-            "Runtime": "nodejs12.x",
-            "Timeout": "25"
-          }
+                },
+                "Role": {
+                    "Fn::GetAtt": [
+                        "LambdaExecutionRole",
+                        "Arn"
+                    ]
+                },
+                "Runtime": "nodejs12.x",
+                "Timeout": "25"
+            }
         },
         "LambdaExecutionRole": {
             "Type": "AWS::IAM::Role",
@@ -72,9 +74,8 @@
                 "RoleName": {
                     "Fn::If": [
                         "ShouldNotCreateEnvResources",
-                        "rapidapideployreactLambdaRoledc891fb6", 
+                        "rapidapideployreactLambdaRoledc891fb6",
                         {
-
                             "Fn::Join": [
                                 "",
                                 [
@@ -85,7 +86,7 @@
                                     }
                                 ]
                             ]
-                        } 
+                        }
                     ]
                 },
                 "AssumeRolePolicyDocument": {
@@ -105,29 +106,69 @@
                     ]
                 }
             }
-        }
-        ,"lambdaexecutionpolicy": {
-            "DependsOn": ["LambdaExecutionRole"],
+        },
+        "lambdaexecutionpolicy": {
+            "DependsOn": [
+                "LambdaExecutionRole"
+            ],
             "Type": "AWS::IAM::Policy",
             "Properties": {
                 "PolicyName": "lambda-execution-policy",
-                "Roles": [{ "Ref": "LambdaExecutionRole" }],
+                "Roles": [
+                    {
+                        "Ref": "LambdaExecutionRole"
+                    }
+                ],
                 "PolicyDocument": {
                     "Version": "2012-10-17",
                     "Statement": [
                         {
                             "Effect": "Allow",
-                            "Action":["logs:CreateLogGroup",
-                            "logs:CreateLogStream",
-                            "logs:PutLogEvents"],
-                            "Resource": { "Fn::Sub" : [ "arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*", { "region": {"Ref": "AWS::Region"},  "account": {"Ref": "AWS::AccountId"}, "lambda": {"Ref": "LambdaFunction"}} ]}
+                            "Action": [
+                                "logs:CreateLogGroup",
+                                "logs:CreateLogStream",
+                                "logs:PutLogEvents"
+                            ],
+                            "Resource": {
+                                "Fn::Sub": [
+                                    "arn:aws:logs:${region}:${account}:log-group:/aws/lambda/${lambda}:log-stream:*",
+                                    {
+                                        "region": {
+                                            "Ref": "AWS::Region"
+                                        },
+                                        "account": {
+                                            "Ref": "AWS::AccountId"
+                                        },
+                                        "lambda": {
+                                            "Ref": "LambdaFunction"
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "secretsmanager:GetSecretValue"
+                            ],
+                            "Resource": {
+                                "Fn::Sub": [
+                                    "arn:aws:secretsmanager:us-east-1:078223272199:secret:rapidapi-RLE73o",
+                                    {
+                                        "region": {
+                                            "Ref": "AWS::Region"
+                                        },
+                                        "account": {
+                                            "Ref": "AWS::AccountId"
+                                        }
+                                    }
+                                ]
+                            }
                         }
                     ]
                 }
             }
         }
-        
-                         
     },
     "Outputs": {
         "Name": {
@@ -136,7 +177,12 @@
             }
         },
         "Arn": {
-            "Value": {"Fn::GetAtt": ["LambdaFunction", "Arn"]}
+            "Value": {
+                "Fn::GetAtt": [
+                    "LambdaFunction",
+                    "Arn"
+                ]
+            }
         },
         "Region": {
             "Value": {
@@ -148,6 +194,5 @@
                 "Ref": "LambdaExecutionRole"
             }
         }
-          
     }
 }
