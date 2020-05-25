@@ -35,6 +35,9 @@ app.post('/weather', async function (req, res) {
   // Encode the variable so we can send the location in a URL
   const encodedLocation = encodeURIComponent(location)
 
+  console.log(location)
+  console.log(encodedLocation)
+
   try {
     const secretObj = await secret()
 
