@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "aws-amplify": "^3.0.12",
     "aws-amplify-react": "^4.1.11",
+    "aws-sdk": "^2.683.0",
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
