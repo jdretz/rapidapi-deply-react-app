@@ -153,7 +153,7 @@
                             ],
                             "Resource": {
                                 "Fn::Sub": [
-                                    "arn:aws:secretsmanager:us-east-1:078223272199:secret:rapidapi-RLE73o",
+                                    "arn:aws:secretsmanager:${region}:${account}:secret:rapidapi-RLE73o",
                                     {
                                         "region": {
                                             "Ref": "AWS::Region"
