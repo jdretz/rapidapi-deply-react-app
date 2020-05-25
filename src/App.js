@@ -15,8 +15,14 @@ function App() {
     setLoading(true)
     setError(false)
 
+    const myInit = {
+      body: {
+        location
+      },
+    };
+
     //make edit to redeploy
-    API.post('weatherAPI', '/weather', { location })
+    API.post('weatherAPI', '/weather', myInit)
       .then((data) => {
         setTempC(data.tempC)
         setTempF(data.tempF)
