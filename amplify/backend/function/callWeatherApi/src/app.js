@@ -36,9 +36,7 @@ app.post('/weather', async function (req, res) {
   const encodedLocation = encodeURIComponent(location)
 
   try {
-    const RAPIDAPI_KEY = await secret()
-
-    console.log(RAPIDAPI_KEY["RAPIDAPI-KEY"])
+    const secretObj = await secret()
 
     // Call the Weather API
     const { data } = await axios({
@@ -47,7 +45,7 @@ app.post('/weather', async function (req, res) {
       headers: {
         "content-type": "application/octet-stream",
         "x-rapidapi-host": "aerisweather1.p.rapidapi.com",
-        "x-rapidapi-key": RAPIDAPI_KEY,
+        "x-rapidapi-key": secretObj["RAPIDAPI-KEY"],
         "useQueryString": true
       }
     })
