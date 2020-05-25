@@ -32,15 +32,13 @@ app.post('/weather', async function (req, res) {
   // Assign the location value to the variable location from the body object
   const { location } = req.body
 
-  console.log(process.env)
-
   // Encode the variable so we can send the location in a URL
   const encodedLocation = encodeURIComponent(location)
 
   try {
     const RAPIDAPI_KEY = await secret()
 
-    console.log(RAPIDAPI_KEY)
+    console.log(RAPIDAPI_KEY["RAPIDAPI-KEY"])
 
     // Call the Weather API
     const { data } = await axios({
